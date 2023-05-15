@@ -1,11 +1,11 @@
-import { Logo } from "@/assets/svg";
+"use client";
 import clsx from "clsx";
 import { deleteCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import {
-	MdOutlineOtherHouses,
+	MdHome,
 	MdOutlineStorefront,
 	MdPersonAddAlt1,
 	MdPersonSearch,
@@ -21,7 +21,7 @@ const USERS = [
 				className="w-5 h-5"
 			/>
 		),
-		title: "Tạo tài khoản",
+		title: "Quản lý kho hàng",
 	},
 	{
 		key: "/admin/user/account_managers",
@@ -32,7 +32,40 @@ const USERS = [
 				className="w-5 h-5"
 			/>
 		),
-		title: "Quản trị tài khoản",
+		title: "Quản lý sản phẩm",
+	},
+	{
+		key: "/admin/user/account_managers",
+		icon: (active) => (
+			<MdPersonSearch
+				size={20}
+				color={active ? "#E5B611" : "black"}
+				className="w-5 h-5"
+			/>
+		),
+		title: "Quản lý tài khoản thành viên",
+	},
+	{
+		key: "/admin/user/account_managers",
+		icon: (active) => (
+			<MdPersonSearch
+				size={20}
+				color={active ? "#E5B611" : "black"}
+				className="w-5 h-5"
+			/>
+		),
+		title: "Quản lý đơn hàng",
+	},
+	{
+		key: "/admin/user/account_managers",
+		icon: (active) => (
+			<MdPersonSearch
+				size={20}
+				color={active ? "#E5B611" : "black"}
+				className="w-5 h-5"
+			/>
+		),
+		title: "Quản lý nhân viên",
 	},
 ];
 
@@ -46,7 +79,18 @@ const POCS = [
 				className="w-5 h-5"
 			/>
 		),
-		title: "Quản trị POC",
+		title: "Thông kê công nợ",
+	},
+	{
+		key: "/admin/poc_managers",
+		icon: (active) => (
+			<MdOutlineStorefront
+				size={20}
+				color={active ? "#E5B611" : "black"}
+				className="w-5 h-5"
+			/>
+		),
+		title: "Quản lý ưu đãi, marketing",
 	},
 ];
 
@@ -63,9 +107,7 @@ const AdminLayout = ({ children }) => {
 			{/* <!-- Desktop sidebar --> */}
 			<header className="z-10 bg-white border-b-[1px] h-14 min-h-[56px] flex items-center justify-between px-6">
 				<div className="text-lg font-bold text-gray-800">
-					<Link href="/" className="h-8 w-[138px] block" passHref>
-						<Logo />
-					</Link>
+					<Link href="/" className="h-8 w-[138px] block" passHref></Link>
 				</div>
 				<div className="container flex items-center justify-between h-full mx-auto  dark:text-purple-300">
 					{/* <!-- Mobile hamburger --> */}
@@ -262,13 +304,13 @@ const AdminLayout = ({ children }) => {
 										className={clsx(
 											"flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 p-2 rounded-md",
 											{
-												"bg-[#F2F2F2] text-black": pathname === "/admin",
+												"bg-[#e7ab2c] text-black": pathname === "/admin",
 											}
 										)}
 										href="/admin"
 										passHref
 									>
-										<MdOutlineOtherHouses
+										<MdHome
 											size={20}
 											color={pathname === "/admin" ? "#E5B611" : "black"}
 											className="w-5 h-5"
