@@ -1,4 +1,5 @@
 
+"use client"
 import AdminLayout from '@/layouts/AdminLayout'
 import '../../styles/global.css'
 import { Inter } from 'next/font/google'
