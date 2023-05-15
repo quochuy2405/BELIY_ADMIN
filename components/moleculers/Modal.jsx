@@ -8,14 +8,22 @@ const Modal = ({ isOpen, handleClose, children, title, size = "3xl" }) => {
 			tabIndex={-1}
 			aria-hidden="true"
 			className={clsx(
-				"fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center bg-[#a8a8a860]",
+				"fixed top-0 left-0 right-0 z-50 w-screen p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center bg-[#a8a8a860]",
 				{
 					hidden: !isOpen,
 					block: isOpen,
 				}
 			)}
 		>
-			<div className={`relative w-full max-w-${size} max-h-full`}>
+			<div
+				className={clsx(`relative w-full  max-h-full`, {
+					"max-w-md": size === "md",
+					"max-w-lg": size === "lg",
+					"max-w-xl": size === "xl",
+					"max-w-2xl": size === "2xl",
+					"max-w-3xl": size === "3xl",
+				})}
+			>
 				{/* Modal content */}
 				<div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
 					<button
