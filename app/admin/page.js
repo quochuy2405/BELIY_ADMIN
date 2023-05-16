@@ -1,10 +1,11 @@
 "use client"
+import { DashBoard } from '@/components/templates'
 import React from 'react'
 
-const page = () => {
+const DashBoardPage = () => {
     return (
-        <div>page</div>
+        <DashBoard />
     )
 }
 
-export default page
+export default DashBoardPage
