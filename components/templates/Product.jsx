@@ -7,6 +7,10 @@ import { Modal } from "../moleculers";
 import { useState } from "react";
 const tabs = [
 	{
+		key: "all",
+		name: "Tất cả sản phẩm",
+	},
+	{
 		key: "top",
 		name: "Áo Thun",
 	},
@@ -137,7 +141,7 @@ const Stock = () => {
 									href={`/admin/stock?tab=${item.key}`}
 									className={clsx("inline-block p-4  rounded-t-l", {
 										"active text-blue-600 border-b-2 border-blue-600":
-											tab === item.key,
+											tab === item.key || (!tab && item.key === "all"),
 									})}
 								>
 									{item.name}

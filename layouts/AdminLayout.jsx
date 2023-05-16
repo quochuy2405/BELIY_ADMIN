@@ -106,15 +106,19 @@ const AdminLayout = ({ children }) => {
 	return (
 		<div className="flex flex-col h-screen bg-gray-50 overflow-hidden">
 			{/* <!-- Desktop sidebar --> */}
+			<input id="hamburger" type="checkbox" className="hidden" defaultChecked />
 			<header className="z-10 bg-white border-b-[1px] h-14 min-h-[56px] flex items-center justify-between px-6">
-				<div className="text-lg font-bold text-gray-800">
-					<Link href="/" className="h-8 w-[138px] block" passHref></Link>
-				</div>
+				<Link href="/admin" className="h-16 w-16 md:block hidden " passHref>
+					<div className="bg-[url('/logo.png')] bg-cover bg-no-repeat w-full h-full" />
+				</Link>
+
 				<div className="container flex items-center justify-between h-full mx-auto  dark:text-purple-300">
 					{/* <!-- Mobile hamburger --> */}
-					<button
+
+					<label
 						className="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
 						aria-label="Menu"
+						htmlFor="hamburger"
 					>
 						<svg
 							className="w-6 h-6"
@@ -128,7 +132,7 @@ const AdminLayout = ({ children }) => {
 								clipRule="evenodd"
 							></path>
 						</svg>
-					</button>
+					</label>
 					<div />
 					<ul className="flex items-centers flex-shrink-0 space-x-6 h-full">
 						{/* <!-- Theme toggler --> */}
@@ -179,13 +183,16 @@ const AdminLayout = ({ children }) => {
 									aria-hidden="true"
 								/>
 							</button>
-							<span className="text-sm font-bold ml-3">Quốc Vinh</span>
+							<span className="text-sm font-bold ml-3">Quốc Huy</span>
 						</li>
 					</ul>
 				</div>
 			</header>
-			<div className="flex flex-1 w-full h-full">
-				<aside className="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-white md:block shadow-lg">
+			<div className="flex flex-1 w-full h-full relative">
+				<aside
+					id="bar-mobile"
+					className="z-20 h-full absolute top-0 w-[40%] flex-shrink-0 md:w-64 overflow-y-auto bg-white md:block shadow-lg md:relative md:!translate-x-0"
+				>
 					<div className="text-gray-500">
 						<div className="p-4 w-full">
 							<ul className="pb-4">
@@ -194,7 +201,7 @@ const AdminLayout = ({ children }) => {
 										className={clsx(
 											"flex items-center w-full text-sm font-medium transition-colors duration-150 hover:text-gray-800 p-2 rounded-md",
 											{
-												"bg-[#e7ab2c] text-black": pathname === "/admin",
+												"bg-[#F2F2F2] text-black": pathname === "/admin",
 											}
 										)}
 										href="/admin"
